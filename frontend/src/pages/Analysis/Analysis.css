@@ -1,0 +1,73 @@
+.analysis-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.analysis-header h1 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.analysis-header p {
+  color: var(--text-soft);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+.analysis-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-soft);
+  margin-top: 8px;
+}
+
+.list-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.list-title.green { color: #059669; }
+.list-title.red { color: #dc2626; }
+.list-title.amber { color: #d97706; }
+
+.glass-card ul,
+.glass-card ol {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.sequence-list li {
+  padding: 4px 0;
+}
+
+.project-mini {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  background: var(--white);
+}
+
+.project-mini h4 {
+  margin: 10px 0 6px;
+  font-size: 15px;
+}
+
+.project-mini p {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.5;
+}

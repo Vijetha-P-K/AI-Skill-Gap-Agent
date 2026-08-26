@@ -1,0 +1,30 @@
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.dash-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.dash-header p {
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+
+.dash-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.dash-row:last-child {
+  border-bottom: none;
+}

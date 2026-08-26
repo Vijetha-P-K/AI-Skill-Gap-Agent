@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+*.db
+chroma_data/
+backend/app/static/uploads/
+backend/app/static/reports/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Misc
+.DS_Store
+*.log
+.idea/
+.vscode/
