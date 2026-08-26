@@ -1,114 +1,157 @@
-# AI Skill Gap Analysis Agent
+# 🤖 AI Skill Gap Analysis Agent
 
-An AI-powered full-stack web application that helps students and fresh graduates identify
-their technical skill gaps, generate personalized learning roadmaps, analyze resumes,
-get project recommendations, and prepare for interviews — powered by real AI using the
-Groq API, LangChain, and semantic retrieval from ChromaDB.
+> An AI-powered full-stack career development platform that helps students and fresh graduates identify skill gaps, build personalized learning roadmaps, analyze resumes, discover suitable projects, and prepare for interviews.
 
-## Features
+## ✨ Features
 
-- **AI Skill Gap Analysis** — select a technology, tick completed topics, get a dynamic AI report
-- **Personalized Learning Roadmap** — Beginner → Intermediate → Advanced → Industry Ready timeline
-- **Resume Analysis** — upload a PDF, get ATS score, strengths, weak sections, and fixes
-- **Project Recommendations** — projects matched to your level with duration and outcomes
-- **Interview Preparation** — technical questions, HR questions, coding challenges, MCQs
-- **Dashboard** — skill level, progress bars, scores, and history
-- **JWT Authentication** — secure register/login with hashed passwords
+* 🧠 **AI Skill Gap Analysis** — Select a technology, mark completed topics, and get a personalized AI-generated skill-gap report.
+* 🗺️ **Personalized Learning Roadmap** — Generate a structured roadmap from Beginner → Intermediate → Advanced → Industry Ready.
+* 📄 **Resume Analysis** — Upload a PDF resume and receive an ATS score, strengths, weak sections, missing keywords, and improvement suggestions.
+* 💡 **Project Recommendations** — Get project ideas based on your current skills, experience level, and career goals.
+* 🎤 **Interview Preparation** — Generate technical questions, HR questions, coding challenges, and MCQs.
+* 📊 **Dashboard** — Track skill levels, progress, resume scores, recommendations, and analysis history.
+* 🔐 **JWT Authentication** — Secure registration and login with password hashing and protected API endpoints.
 
-## Technology Stack
+## 🛠️ Technology Stack
 
-| Layer | Technologies |
-|---|---|
-| Frontend | React.js, JavaScript, CSS3, React Router DOM, Axios, Lucide React |
-| Backend | Python, FastAPI, Pydantic |
-| AI | Groq API, LangChain, Prompt Engineering |
-| Database | PostgreSQL, ChromaDB (vector database for semantic retrieval) |
-| Auth | JWT |
-| Deployment | Docker, docker-compose, GitHub Actions |
+| Layer              | Technologies                            |
+| ------------------ | --------------------------------------- |
+| 🎨 Frontend        | React.js, JavaScript, CSS3              |
+| 🧭 Routing         | React Router DOM                        |
+| 🌐 API Client      | Axios                                   |
+| 🎨 UI Icons        | Lucide React                            |
+| ⚙️ Backend         | Python, FastAPI, Pydantic               |
+| 🤖 AI              | Groq API, LangChain, Prompt Engineering |
+| 🔎 Vector Database | ChromaDB                                |
+| 🗄️ Database       | PostgreSQL                              |
+| 🔐 Authentication  | JWT, bcrypt                             |
+| 🐳 Deployment      | Docker, Docker Compose                  |
+| ⚙️ CI/CD           | GitHub Actions                          |
 
-## Project Structure
+## 🏗️ Project Architecture
 
+```text
+User
+ │
+ ▼
+React Frontend
+ │
+ ▼
+FastAPI Backend
+ │
+ ├── 🔐 Authentication
+ ├── 🧠 Skill Gap Agent
+ ├── 🗺️ Roadmap Agent
+ ├── 📄 Resume Analyzer
+ ├── 💡 Project Recommendation Agent
+ └── 🎤 Interview Preparation Agent
+          │
+          ▼
+    ┌───────────────┐
+    │   LangChain   │
+    └───────┬───────┘
+            │
+     ┌──────┴──────┐
+     ▼             ▼
+  Groq API      ChromaDB
+     │             │
+     └──────┬──────┘
+            ▼
+      Personalized
+       AI Response
+            │
+            ▼
+       PostgreSQL
 ```
-AI-SKILL-GAP-AGENT/
-├── backend/          # FastAPI app (api, agents, prompts, services, vectorstore, models, schemas)
-├── frontend/         # React (Vite) app (components, pages, services, hooks, context)
-├── docs/
-├── docker-compose.yml
-└── .github/workflows/ci.yml
-```
 
-## Quick Start (Docker — recommended)
 
-1. Create a `.env` file in the project root:
+## 🔌 API Endpoints
 
-```env
-GROQ_API_KEY=your_groq_api_key_here
-JWT_SECRET_KEY=a_long_random_secret
-```
+| Endpoint                   | Method | Description                      |
+| -------------------------- | ------ | -------------------------------- |
+| `/api/auth/register`       | POST   | Create account                   |
+| `/api/auth/login`          | POST   | Login and receive JWT            |
+| `/api/auth/me`             | GET    | Get current user                 |
+| `/api/skills/technologies` | GET    | Get technologies and topics      |
+| `/api/skills/analyze`      | POST   | Generate skill-gap analysis      |
+| `/api/skills/roadmap`      | POST   | Generate learning roadmap        |
+| `/api/skills/projects`     | POST   | Generate project recommendations |
+| `/api/skills/interview`    | POST   | Generate interview preparation   |
+| `/api/resume/analyze`      | POST   | Analyze resume PDF               |
+| `/api/reports/dashboard`   | GET    | Get dashboard statistics         |
 
-2. Build and run everything (PostgreSQL + backend + frontend):
 
-```bash
-docker compose up --build
-```
+## 🚀 Quick Start
 
-3. Open the app at **http://localhost:3000** (API at http://localhost:8000, docs at http://localhost:8000/docs).
-
-## Local Development (without Docker)
+## 💻 Local Development
 
 ### Backend
 
 ```bash
 cd backend
+
 python3 -m venv venv
+
 source venv/bin/activate
+
 pip install -r requirements.txt
-cp .env.example .env   # add your GROQ_API_KEY
+
+cp .env.example .env
+
 uvicorn app.main:app --reload --port 8000
 ```
-
-By default the backend uses SQLite locally; set `DATABASE_URL` to a PostgreSQL URL for production.
 
 ### Frontend
 
 ```bash
 cd frontend
+
 npm install
+
 npm run dev
 ```
 
-Open http://localhost:5173 — the dev server proxies `/api` to the backend on port 8000.
+## 🔐 Security
 
-## Environment Variables
+* 🔒 Passwords hashed using bcrypt
+* 🎟️ JWT-based authentication
+* 🛡️ Protected API endpoints
+* ✅ Pydantic request validation
+* 📄 Secure PDF upload validation
+* 📦 File size restrictions
+* 🌐 CORS configuration
+* 🔑 Environment-based secrets
 
-| Variable | Description |
-|---|---|
-| `GROQ_API_KEY` | Your Groq API key (required for AI features) |
-| `GROQ_MODEL` | Groq model name (default: `llama-3.3-70b-versatile`) |
-| `DATABASE_URL` | PostgreSQL connection string (SQLite fallback for local dev) |
-| `JWT_SECRET_KEY` | Secret used to sign JWT tokens |
-| `CHROMA_PERSIST_DIR` | Directory for ChromaDB persistence |
-| `CORS_ORIGINS` | Comma-separated list of allowed origins |
+## 🎯 Target Users
 
-## API Overview
+* 🎓 Students looking to improve their technical skills
+* 👨‍💻 Fresh graduates preparing for their first job
+* 🚀 Job seekers identifying missing industry skills
+* 💼 Candidates preparing for technical interviews
 
-| Endpoint | Method | Description |
-|---|---|---|
-| `/api/auth/register` | POST | Create account, returns JWT |
-| `/api/auth/login` | POST | Login, returns JWT |
-| `/api/auth/me` | GET | Current user profile |
-| `/api/skills/technologies` | GET | Technologies + topic checklists |
-| `/api/skills/analyze` | POST | AI skill gap analysis |
-| `/api/skills/roadmap` | POST | AI learning roadmap |
-| `/api/skills/projects` | POST | AI project recommendations |
-| `/api/skills/interview` | POST | AI interview preparation |
-| `/api/resume/analyze` | POST | Resume PDF upload + AI review |
-| `/api/reports/dashboard` | GET | Dashboard statistics |
+## 🔮 Future Enhancements
 
-## Security
+* 🎯 Job Description Skill Matching
+* 🔗 LinkedIn Profile Analysis
+* 💻 Interactive Coding Assessments
+* 📚 AI-Generated Study Materials
+* 🏆 Gamified Learning
+* 📈 Advanced Career Analytics
+* 💬 AI Career Assistant
+* 📑 Resume Version Comparison
+* 🔔 Personalized Learning Reminders
+* ☁️ Cloud Deployment
 
-- Passwords hashed with bcrypt
-- JWT bearer authentication on all protected endpoints
-- Pydantic validation on every request
-- Secure PDF upload validation (type + size limits)
-- CORS configuration and environment-based secrets
+## 👩‍💻 Project Highlights
+
+> 🤖 **AI-powered career guidance in one platform — from identifying skill gaps to becoming interview-ready.**
+
+### 🔑 Core Technologies
+
+`React.js` • `FastAPI` • `Python` • `Groq` • `LangChain` • `ChromaDB` • `PostgreSQL` • `JWT` • `Docker`
+
+---
+
+⭐ If you find this project useful, consider giving the repository a star!
+
+**Built with ❤️ using React, FastAPI, Groq, LangChain, ChromaDB, and PostgreSQL.**
