@@ -2,6 +2,10 @@
 
 > An AI-powered full-stack career development platform that helps students and fresh graduates identify skill gaps, build personalized learning roadmaps, analyze resumes, discover suitable projects, and prepare for interviews.
 
+
+🚀 **Live Demo:** [AI Skill Gap Analysis Agent](https://ai-skill-gap-agent-1.onrender.com)
+
+
 ## ✨ Features
 
 * 🧠 **AI Skill Gap Analysis** — Select a technology, mark completed topics, and get a personalized AI-generated skill-gap report.
